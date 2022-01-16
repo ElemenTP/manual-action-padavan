@@ -85,7 +85,7 @@ jobs:
         md5sum *.trx >> readme.txt || echo
         ls -l
     - name: 上传固件到Artifacts
-      if: true
+      if: ${{true}}
       uses: actions/upload-artifact@v2
       with:
         name: ${{ env.NAME }}
