@@ -5,15 +5,15 @@ on:
     inputs:
       production:
         description: 设置固件型号：
-        default: "MSG1500-7615"
+        default: "NETGEAR-BZV"
         required: false
       cloneurl:
         description: 设置源码地址：
-        default: "https://github.com/vb1980/Padavan-KVR.git"
+        default: "https://github.com/ElemenTP/rt-n56u.git"
         required: false
       release:
         description: 是否发布到Release？
-        default: 'yes'
+        default: 'no'
         required: false
 
 env:
