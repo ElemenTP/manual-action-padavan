@@ -11,6 +11,10 @@ on:
         description: 设置源码地址：
         default: "https://github.com/ElemenTP/rt-n56u.git"
         required: false
+      branch:
+        description: 设置源码分支：
+        default: "master"
+        required: false
       release:
         description: 是否发布到Release？
         default: 'no'
@@ -43,7 +47,7 @@ jobs:
         mkdir -p $IMAGES
         echo 开始编译时间： >> $IMAGES/readme.txt
         TZ='Asia/Shanghai' date '+%Y-%m-%d %H:%M:%S' >> $IMAGES/readme.txt
-        git clone --depth=1 ${{ github.event.inputs.cloneurl }} $RT_N56U > /dev/null
+        git clone --depth=1 ${{ github.event.inputs.cloneurl }} --branch=${{ github.event.inputs.branch }} $RT_N56U > /dev/null
         cd $RT_N56U/toolchain-mipsel
         sh dl_toolchain.sh > /dev/null
     - name: 自定义配置
