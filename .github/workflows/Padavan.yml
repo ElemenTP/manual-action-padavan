@@ -47,9 +47,9 @@ jobs:
         mkdir -p $IMAGES
         echo 开始编译时间： >> $IMAGES/readme.txt
         TZ='Asia/Shanghai' date '+%Y-%m-%d %H:%M:%S' >> $IMAGES/readme.txt
-        git clone --depth=1 ${{ github.event.inputs.cloneurl }} --branch=${{ github.event.inputs.branch }} $RT_N56U > /dev/null
+        git clone --depth=1 ${{ github.event.inputs.cloneurl }} --branch=${{ github.event.inputs.branch }} $RT_N56U
         cd $RT_N56U/toolchain-mipsel
-        sh dl_toolchain.sh > /dev/null
+        sh dl_toolchain.sh
     - name: 自定义配置
       run: |
         cp -f ./defaults.h $TRUNK/user/shared
@@ -63,7 +63,7 @@ jobs:
           pushd $TRUNK
           echo "::group::开始编译 ${m}..."
           sudo ./clear_tree || echo
-          sudo ./build_firmware_modify $m > /dev/null
+          sudo ./build_firmware_modify $m
           ls -l images
           sudo mv -f images/*.trx $IMAGES
           echo "::endgroup::"
